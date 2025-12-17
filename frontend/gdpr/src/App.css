@@ -1,0 +1,176 @@
+/* =========================
+   Base reset
+========================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f6f7f9;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+  color: #1f2937;
+}
+
+/* =========================
+   Layout
+========================= */
+.app-container {
+  max-width: 760px;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 28px;
+}
+
+/* =========================
+   Headings
+========================= */
+h1 {
+  margin: 0 0 24px;
+  text-align: center;
+  font-size: 1.75rem;
+}
+
+h2 {
+  margin-top: 24px;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+/* =========================
+   Textareas
+========================= */
+textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 100px;
+  padding: 12px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  background: #ffffff;
+}
+
+/* =========================
+   Buttons
+========================= */
+button {
+  appearance: none;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.1s;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Primary */
+.btn-primary {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+/* Success */
+.btn-success {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.btn-success:hover:not(:disabled) {
+  background: #15803d;
+}
+
+/* Secondary */
+.btn-secondary {
+  background: #6b7280;
+  color: #ffffff;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #4b5563;
+}
+
+/* Disabled action */
+.btn-disabled {
+  background: #9ca3af;
+  color: #ffffff;
+}
+
+/* =========================
+   Button group
+========================= */
+.button-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* =========================
+   GDPR warning box
+========================= */
+.gdpr-warning {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin: 16px 0;
+}
+
+.gdpr-warning strong {
+  display: block;
+  color: #991b1b;
+  margin-bottom: 6px;
+}
+
+.gdpr-warning ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+.gdpr-warning li {
+  font-size: 0.9rem;
+}
+
+/* =========================
+   AI Response
+========================= */
+.ai-response {
+  margin-top: 24px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 16px;
+}
+
+.ai-response-content {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 14px;
+  white-space: pre-wrap;
+  font-size: 0.95rem;
+}
+
+/* =========================
+   Utility
+========================= */
+.center {
+  text-align: center;
+}

@@ -1,8 +1,18 @@
 import re
-import spacy
 
-"""Load SpaCy model for Named Entity Recognition (NER)"""
-nlp = spacy.load("en_core_web_sm")
+# Optional spaCy import + guarded model load so app won't crash at import time
+try:
+    import spacy
+    try:
+        nlp = spacy.load("en_core_web_sm")
+        SPACY_ENABLED = True
+    except Exception:
+        nlp = None
+        SPACY_ENABLED = False
+except Exception:
+    spacy = None
+    nlp = None
+    SPACY_ENABLED = False
 
 """Regular expressions for detecting various types of PII data."""
 # ===========================
@@ -21,16 +31,17 @@ EMAIL_RE = re.compile(
 # ===========================
 PHONE_RE = re.compile(
     r"""
-    (?<!\d)                             # no digit before
-    (                                   # start main group
-        (?:\+?\d{1,3}[\s-]?)?            # optional country code
-        (?:\(?0\d{1}\)?[\s-]?)?          # optional (0X) area code
-        (?:\d{3}[\s-]?\d{3,4})           # local number, e.g. 345 678 or 3456 7890
+    (?<!\d)                               # no digit before
+    (
+        (?:\+?\d{1,3}\s?)?                 # optional +61, +1, etc
+        (?:\(0\d\)\s?|\b0\d{1,2}\s?)       # (07) or 07 or 041
+        \d{3,4}\s?\d{3,4}                  # final local number block
     )
-    (?!\d)                              # no digit after (prevents matching inside long digit strings)
+    (?!\d)                                # no digit after
     """,
-    re.VERBOSE,
+    re.VERBOSE
 )
+
 
 
 # ===========================
@@ -119,6 +130,9 @@ def detect_pii_regex(text: str):
 
 
 def detect_pii_spacy(text: str):
+    if not SPACY_ENABLED:
+        return {}
+
     doc = nlp(text)
 
     entities = {

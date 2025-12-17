@@ -1,2 +1,8 @@
 re
 spacy
+chromadb
+sentence-transformers
+
+fastapi
+uvicorn
+python-multipart

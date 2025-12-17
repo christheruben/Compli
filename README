@@ -1,1 +1,10 @@
 MUST INSTALL python -m spacy download en_core_web_sm
+
+RAG:
+Vector database requires initialization and a directory to store it\
+Model used for RAG must be installed somewhere
+
+PII:
+
+
+spaCy:

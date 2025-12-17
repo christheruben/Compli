@@ -1,1 +1,1 @@
-__all__ = ['classifier']
+__all__ = ['classifier', 'special_classifier', 'embeddings', 'rag_classifier', 'gdpr_loader', 'processing']

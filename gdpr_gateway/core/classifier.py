@@ -1,5 +1,6 @@
 import re
 
+"""Classifier module for detecting PII data using regex and spaCy NER."""
 # Optional spaCy import + guarded model load so app won't crash at import time
 try:
     import spacy
@@ -23,24 +24,46 @@ EMAIL_RE = re.compile(
 )
 
 # ===========================
-# Phone Number Patterns
-# Supports:
+# International Phone Number Pattern (GDPR Detection)
+#
+# Detects likely international and domestic phone numbers.
+# Designed for GDPR/PII detection — not strict validation.
+#
+# Supported formats:
+#   +1 415 555 2671
+#   +44 20 7946 0958
 #   +61 412 345 678
-#   0412 345 678
-#   (07) 3456 7890
+#   +49 (30) 901820
+#   (415) 555-2671
+#   415-555-2671
+#   415 555 2671
+#
+# Characteristics:
+#   - Optional leading +
+#   - Allows spaces, dashes, parentheses
+#   - Requires 7–15 total digits (E.164 compatible)
+#   - Avoids matching long IDs or timestamps
+#
+# Not supported:
+#   - Extensions (x123)
+#   - Shortcodes (911, 112)
+#   - Alphanumeric vanity numbers
 # ===========================
 PHONE_RE = re.compile(
     r"""
-    (?<!\d)                               # no digit before
-    (
-        (?:\+?\d{1,3}\s?)?                 # optional +61, +1, etc
-        (?:\(0\d\)\s?|\b0\d{1,2}\s?)       # (07) or 07 or 041
-        \d{3,4}\s?\d{3,4}                  # final local number block
+    (?<!\d)                              # no digit before
+
+    (                                   # full phone number
+        \+?\d{1,3}[\s\-\.]?              # optional country code
+        (?:\(\d{1,4}\)|\d{1,4})?         # optional area code
+        (?:[\s\-\.]?\d{2,4}){2,4}        # number groups
     )
-    (?!\d)                                # no digit after
+
+    (?!\d)                              # no digit after
     """,
     re.VERBOSE
 )
+
 
 
 

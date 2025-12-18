@@ -4,6 +4,10 @@ import time
 import chromadb
 import os
 
+"""OPTIONAL
+Must Run asynchronously
+Classifies text for GDPR special categories using Llama 3 LLM. """
+
 OLLAMA_URL = "http://localhost:11434/api/generate"
 
 PROMPT_TEMPLATE = """

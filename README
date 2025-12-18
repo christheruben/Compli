@@ -1,40 +1,40 @@
-GDPR Compliance Gateway
+###GDPR Compliance Gateway###
 
 A high-performance, blocking GDPR compliance gateway for text inputs.
 This system prevents any sensitive or GDPR-violating data from being sent to downstream LLMs or APIs by performing local, deterministic audits before data leaves your environment.
 
-Key guarantee:
+*Key functionality:*
 ❌ No OpenAI / external LLM calls occur unless the text is deemed GDPR-safe.
 
-🚀 Features
+##🚀 Features##
 
-✅ Hard-blocking GDPR enforcement (no “best effort”)
+#✅ Hard-blocking GDPR enforcement (no “best effort”)#
 
-⚡ Sub-second classification (embedding-only, no LLM dependency)
+#⚡ Sub-second classification (embedding-only, no LLM dependency)#
 
-🔍 Multi-layer detection
+#🔍 Multi-layer detection#
 
-Regex PII detection
+       Regex PII detection
 
-spaCy Named Entity Recognition
+       spaCy Named Entity Recognition
 
-Semantic GDPR violation detection via embeddings
+       Semantic GDPR violation detection via embeddings
 
-🧠 Semantic GDPR understanding
+#🧠 Semantic GDPR understanding#
 
-Detects violations regex/NER can’t catch
+       Detects violations regex/NER can’t catch
+       
+       Embedding similarity against GDPR Articles & Recitals
 
-Embedding similarity against GDPR Articles & Recitals
+#📝 Append-only audit logging#
 
-📝 Append-only audit logging
+#🎭 Automatic masking of sensitive content#
 
-🎭 Automatic masking of sensitive content
+#📊 Built-in performance timing#
 
-📊 Built-in performance timing
+#🧱 Designed for enterprise & regulatory use#
 
-🧱 Designed for enterprise & regulatory use
-
-🧠 Why This Exists
+##🧠 Why This Exists##
 
 Most “GDPR filters”:
 
@@ -44,7 +44,7 @@ Only catch obvious PII
 
 Allow data through with explanations later
 
-This system:
+#This system:#
 
 Stops violations before they happen
 
@@ -54,7 +54,7 @@ Produces deterministic, auditable decisions
 
 Works offline
 
-🧩 Architecture Overview
+#🧩 Architecture Overview#
 ┌──────────────┐
 │ User Input   │
 └──────┬───────┘
@@ -81,7 +81,7 @@ Works offline
 │ SAFE OUTPUT OR HARD BLOCK    │
 └──────────────────────────────┘
 
-📁 Project Structure
+#📁 Project Structure#
 gdpr_gateway/
 ├── api/
 │   └── app.py                    # FastAPI entrypoint
@@ -100,8 +100,8 @@ gdpr_gateway/
 │   └── audit_log.jsonl           # Append-only audit log
 └── README.md
 
-🔍 Detection Layers Explained
-1️⃣ Regex PII Detection (classifier.py)
+##🔍 Detection Layers Explained##
+#1️⃣ Regex PII Detection (classifier.py)#
 
 Detects:
 
@@ -121,7 +121,7 @@ Customer IDs
 
 Fast, deterministic, zero ML latency
 
-2️⃣ spaCy Named Entity Recognition
+#2️⃣ spaCy Named Entity Recognition#
 
 Detects:
 
@@ -137,7 +137,7 @@ DATE
 
 Used for contextual PII that regex cannot capture.
 
-3️⃣ GDPR Semantic Classifier (Embedding-Only)
+#3️⃣ GDPR Semantic Classifier (Embedding-Only)#
 
 This is the core innovation.
 
@@ -163,7 +163,7 @@ Religious belief storage
 
 Employment discrimination risks
 
-🧱 Blocking Logic
+#🧱 Blocking Logic#
 
 The system blocks if ANY of the following are true:
 
@@ -176,7 +176,7 @@ blocked = bool(
 
 There is no soft-allow mode.
 
-🎭 Masking Behavior
+#🎭 Masking Behavior#
 
 Sensitive data is replaced inline:
 
@@ -189,7 +189,7 @@ GDPR violations are prefixed:
 
 [GDPR_VIOLATION | Articles: Article 9 | Recitals: Recital 51]
 
-📝 Audit Logging
+#📝 Audit Logging#
 
 Every request is logged to:
 
@@ -212,7 +212,7 @@ Performance timings
 
 Append-only by design for regulatory auditability.
 
-⏱ Performance
+#⏱ Performance#
 
 Typical timings on CPU:
 
@@ -226,21 +226,21 @@ Compared to:
 
 ❌ LLM pipelines: 10–90 seconds
 
-▶️ Running the Project
-1️⃣ Install Dependencies
+##▶️ Running the Project##
+#1️⃣ Install Dependencies#
 pip install fastapi uvicorn spacy chromadb sentence-transformers
 python -m spacy download en_core_web_sm
 
-2️⃣ Build GDPR Vector Database
+#2️⃣ Build GDPR Vector Database#
 python gdpr_gateway/core/gdpr_loader.py
 
 
 This runs once and persists embeddings to disk.
 
-3️⃣ Start the API
+#3️⃣ Start the API#
 uvicorn gdpr_gateway.api.app:app --reload
 
-4️⃣ Test Request
+#4️⃣ Test Request#
 POST /process_prompt
 {
   "text": "I am analyzing patient medical records including depression and genetic risks."
@@ -256,7 +256,7 @@ Response:
   "timings": { ... }
 }
 
-🔐 Security & Privacy Guarantees
+##🔐 Security & Privacy Guarantees##
 
 ❌ No cloud dependency
 
@@ -270,18 +270,18 @@ Response:
 
 ✅ Auditor-friendly
 
-🧪 Example Test Prompts
+##🧪 Example Test Prompts##
 
-Should block:
+_Should block:_
 
 We store employee medical histories and genetic markers to evaluate job performance.
 
 
-Should allow:
+_Should allow:_
 
 Summarize GDPR Article 6 in simple terms.
 
-🔮 Future Extensions
+##🔮 Future Extensions##
 
 ⏳ Audit log rotation & retention policies
 
@@ -293,7 +293,7 @@ Summarize GDPR Article 6 in simple terms.
 
 🌍 Multilingual GDPR support
 
-📜 License
+##📜 License##
 
 Internal / Enterprise Use
 Not legal advice.

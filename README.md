@@ -54,7 +54,8 @@ Produces deterministic, auditable decisions
 
 Works offline
 
-## 🧩 Architecture Overview#
+## 🧩 Architecture Overview
+```
 ┌──────────────┐
 │ User Input   │
 └──────┬───────┘
@@ -80,7 +81,7 @@ Works offline
 ┌──────────────────────────────┐
 │ SAFE OUTPUT OR HARD BLOCK    │
 └──────────────────────────────┘
-
+```
 ## 📁 Project Structure
 gdpr_gateway/
 ├── api/

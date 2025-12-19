@@ -84,6 +84,7 @@ Works offline
 ```
 ## 📁 Project Structure
 ```
+frontend/
 gdpr_gateway/
 ├── api/
 │   └── app.py                    # FastAPI entrypoint
@@ -140,8 +141,6 @@ DATE
 Used for contextual PII that regex cannot capture.
 
 - ### 3️⃣ GDPR Semantic Classifier (Embedding-Only)
-
-This is the core innovation.
 
 Uses BAAI/bge-small-en-v1.5
 

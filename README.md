@@ -83,6 +83,7 @@ Works offline
 └──────────────────────────────┘
 ```
 ## 📁 Project Structure
+```
 gdpr_gateway/
 ├── api/
 │   └── app.py                    # FastAPI entrypoint
@@ -100,7 +101,7 @@ gdpr_gateway/
 ├── logs/
 │   └── audit_log.jsonl           # Append-only audit log
 └── README.md
-
+```
 ## 🔍 Detection Layers Explained
 - ### 1️⃣ Regex PII Detection (classifier.py)
 
@@ -243,35 +244,36 @@ uvicorn gdpr_gateway.api.app:app --reload
 
 ###  4️⃣ Test Request
 POST /process_prompt
+```
 {
   "text": "I am analyzing patient medical records including depression and genetic risks."
 }
-
+```
 
 Response:
-
+```
 {
   "blocked": true,
   "masked_text": "[GDPR_VIOLATION | Articles: Article 9] I am analyzing patient medical records...",
   "detections": { ... },
   "timings": { ... }
 }
-
+```
 ## 🔐 Security & Privacy
 
-❌ No cloud dependency
+- ❌ No cloud dependency
 
-❌ No external LLM calls
+- ❌ No external LLM calls
 
-❌ No raw data persistence beyond audit logs
+- ❌ No raw data persistence beyond audit logs
 
-✅ Fully offline-capable
+- ✅ Fully offline-capable
 
-✅ Deterministic behavior
+- ✅ Deterministic behavior
 
-✅ Auditor-friendly
+- ✅ Auditor-friendly
 
-##🧪 Example Test Prompts##
+## 🧪 Example Test Prompts
 
 _Should block:_
 
@@ -282,17 +284,17 @@ _Should allow:_
 
 Summarize GDPR Article 6 in simple terms.
 
-##🔮 Future Extensions##
+## 🔮 Future Extensions
 
-⏳ Audit log rotation & retention policies
+- ⏳ Audit log rotation & retention policies
 
-🔐 Hash-based PII storage
+- 🔐 Hash-based PII storage
 
-📊 Risk scoring instead of binary blocking
+- 📊 Risk scoring instead of binary blocking
 
-🧠 Optional explanation LLM (post-block only)
+- 🧠 Optional explanation LLM (post-block only)
 
-🌍 Multilingual GDPR support
+- 🌍 Multilingual GDPR support
 
 ## 📜 License
 

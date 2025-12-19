@@ -256,7 +256,7 @@ Response:
   "timings": { ... }
 }
 
-### 🔐 Security & Privacy
+## 🔐 Security & Privacy
 
 ❌ No cloud dependency
 

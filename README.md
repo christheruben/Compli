@@ -1,4 +1,4 @@
-#GDPR Compliance Gateway
+# GDPR Compliance Gateway
 
 A high-performance, blocking GDPR compliance gateway for text inputs.
 This system prevents any sensitive or GDPR-violating data from being sent to downstream LLMs or APIs by performing local, deterministic audits before data leaves your environment.

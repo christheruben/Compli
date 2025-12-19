@@ -3,16 +3,16 @@
 A high-performance, blocking GDPR compliance gateway for text inputs.
 This system prevents any sensitive or GDPR-violating data from being sent to downstream LLMs or APIs by performing local, deterministic audits before data leaves your environment.
 
-* Key functionality: 
+Key functionality: 
 ❌ No OpenAI / external LLM calls occur unless the text is deemed GDPR-safe.
 
 ## 🚀 Features 
 
-### ✅ Hard-blocking GDPR enforcement (no “best effort”)
+- ### ✅ Hard-blocking GDPR enforcement (no “best effort”)
 
-### ⚡ Sub-second classification (embedding-only, no LLM dependency)
+- ### ⚡ Sub-second classification (embedding-only, no LLM dependency)
 
-### 🔍 Multi-layer detection
+- ### 🔍 Multi-layer detection
 
        Regex PII detection
 
@@ -20,19 +20,19 @@ This system prevents any sensitive or GDPR-violating data from being sent to dow
 
        Semantic GDPR violation detection via embeddings
 
-### 🧠 Semantic GDPR understanding
+- ### 🧠 Semantic GDPR understanding
 
        Detects violations regex/NER can’t catch
        
        Embedding similarity against GDPR Articles & Recitals
 
-### 📝 Append-only audit logging
+- ### 📝 Append-only audit logging
 
-### 🎭 Automatic masking of sensitive content#
+- ### 🎭 Automatic masking of sensitive content#
 
-### 📊 Built-in performance timing
+- ### 📊 Built-in performance timing
 
-### 🧱 Designed for enterprise & regulatory use#
+- ### 🧱 Designed for enterprise & regulatory use#
 
 ## 🧠 Why This Exists
 
@@ -101,7 +101,7 @@ gdpr_gateway/
 └── README.md
 
 ## 🔍 Detection Layers Explained
-### 1️⃣ Regex PII Detection (classifier.py)
+- ### 1️⃣ Regex PII Detection (classifier.py)
 
 Detects:
 
@@ -121,7 +121,7 @@ Customer IDs
 
 Fast, deterministic, zero ML latency
 
-### 2️⃣ spaCy Named Entity Recognition
+- ### 2️⃣ spaCy Named Entity Recognition
 
 Detects:
 
@@ -137,7 +137,7 @@ DATE
 
 Used for contextual PII that regex cannot capture.
 
-### 3️⃣ GDPR Semantic Classifier (Embedding-Only)
+- ### 3️⃣ GDPR Semantic Classifier (Embedding-Only)
 
 This is the core innovation.
 
@@ -163,7 +163,7 @@ Religious belief storage
 
 Employment discrimination risks
 
-### 🧱 Blocking Logic
+- ### 🧱 Blocking Logic
 
 The system blocks if ANY of the following are true:
 
@@ -176,7 +176,7 @@ blocked = bool(
 
 There is no soft-allow mode.
 
-### 🎭 Masking Behavior
+- ### 🎭 Masking Behavior
 
 Sensitive data is replaced inline:
 
@@ -189,7 +189,7 @@ GDPR violations are prefixed:
 
 [GDPR_VIOLATION | Articles: Article 9 | Recitals: Recital 51]
 
-### 📝  Audit Logging
+- ### 📝  Audit Logging
 
 Every request is logged to:
 
